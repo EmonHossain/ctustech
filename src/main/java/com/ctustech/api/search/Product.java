@@ -1,78 +1,75 @@
 package com.ctustech.api.search;
 
-import javax.persistence.Column;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
-
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
 @Data
 @Document(indexName="counterfiet", type="product")
 public class Product {
-	@JsonProperty("Year")
+	
+	@Id
+	private String id;
+	//@JsonProperty("Year")
 	private String year;
-	@JsonProperty("Week")
+	//@JsonProperty("Week")
     private String week;
-    @JsonProperty("Type of alert")
+    //@JsonProperty("Type of alert")
     private String alertType;
-    @JsonProperty("Product user")
+    //@JsonProperty("Product user")
     private String productUser;
-    @JsonProperty("Alert number")
-    @Id
+    //@JsonProperty("Alert number")
     private String alertNumber;
-    @JsonProperty("Alert submitted by")
+    //@JsonProperty("Alert submitted by")
     private String submittedBy;
-    @JsonProperty("Category")
+    //@JsonProperty("Category")
     private String category;
-    @JsonProperty("Product")
+    //@JsonProperty("Product")
     private String product;
-    @JsonProperty("Brand")
+    //@JsonProperty("Brand")
     private String brand;
-    @JsonProperty("Name")
+    //@JsonProperty("Name")
     private String name;
-    @JsonProperty("Type / number of model")
-    @Column(columnDefinition="TEXT")
+    //@JsonProperty("Type / number of model")
+    //@Column(columnDefinition="TEXT")
     private String numberOfModel;
-    @JsonProperty("Batch number / Barcode")
+    //@JsonProperty("Batch number / Barcode")
     private String batchNumberOrBarcode;
-    @JsonProperty("OECD Portal Category")
+    //@JsonProperty("OECD Portal Category")
     private String portalCategory;
-    @JsonProperty("Description")
-    @Column(columnDefinition="TEXT")
+    //@JsonProperty("Description")
+    //@Column(columnDefinition="TEXT")
     private String description;
-    @JsonProperty("Country of origin")
+    //@JsonProperty("Country of origin")
     private String countryOfOrigin;
-    @JsonProperty("Counterfeit")
+    //@JsonProperty("Counterfeit")
     private String counterfeit;
-    @JsonProperty("Risk type")
+    //@JsonProperty("Risk type")
     private String riskType;
-    @JsonProperty("Technical defect")
-    @Column(columnDefinition="TEXT")
+    //@JsonProperty("Technical defect")
+    //@Column(columnDefinition="TEXT")
     private String technicalDefect;
-    @JsonProperty("Risk")
+    //@JsonProperty("Risk")
     private String risk;
-    @JsonProperty("Measures adopted by notifying country")
+    //@JsonProperty("Measures adopted by notifying country")
     private String adoptedMeassure;
-    @JsonProperty("Products were found and measures were taken also in")
+    //@JsonProperty("Products were found and measures were taken also in")
     private String foundAndTakenMeassure;
-    @JsonProperty("Company recall page")
+    //@JsonProperty("Company recall page")
     private String companyRecallPage;
-    @JsonProperty("URL of Case")
+    //@JsonProperty("URL of Case")
     private String urlOfCase;
-    @JsonProperty("Barcode")
+    //@JsonProperty("Barcode")
     private String barCode;
-    @JsonProperty("Batch number")
+    //@JsonProperty("Batch number")
     private String batchNumber;
-    @JsonAlias({"Company recall code (**)","Company recall code"})
-    @JsonProperty("Company recall code (**)")
+    //@JsonAlias({"Company recall code (**)","Company recall code"})
+    //@JsonProperty("Company recall code (**)")
     private String companyRecallCode;
-    @JsonAlias({"Production dates (**)","Production dates"})
-    @JsonProperty("Production dates (**)")
+    //@JsonAlias({"Production dates (**)","Production dates"})
+    //@JsonProperty("Production dates (**)")
     private String productionDates;
-    @JsonProperty("Packaging description")
+    //@JsonProperty("Packaging description")
     private String packagingDescription;	
 }

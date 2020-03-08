@@ -9,8 +9,11 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.Data;
 @Entity
 @Table(name="products")
+@Data
 public class TempProduct {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)

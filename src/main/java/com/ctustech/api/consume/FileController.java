@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ctustech.api.search.Product;
+
 @RestController
 @RequestMapping("/file")
 public class FileController {
@@ -22,7 +24,9 @@ public class FileController {
 		consumer.saveDataToDB(products);		
 	}
 	@GetMapping("/elastic")
-	public void readElastic() {
-		consumer.saveDataToElasticServer();		
+	public List<Product> readElastic() {
+		List<Product> products = consumer.mapProduct();
+		consumer.saveDataToElasticServer(products);	
+		return products;
 	}
 }

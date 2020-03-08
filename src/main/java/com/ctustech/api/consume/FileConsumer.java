@@ -2,6 +2,7 @@ package com.ctustech.api.consume;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,24 +47,49 @@ public class FileConsumer {
 		}
 	}
 
-	public void saveDataToElasticServer() {
-		List<Product> products = mapProduct();
+	public void saveDataToElasticServer(List<Product> products) {
+		
 		if (products != null) {
 			elasticRepository.saveAll(products);
 		}
 	}
 
-	private List<Product> mapProduct() {
-		List<Product> products = null;
-		try {
-			File file = ResourceUtils.getFile("classpath:csvjson.json");
-			ObjectMapper mapper = new ObjectMapper();
-			products = mapper.readValue(file, new TypeReference<List<Product>>() {
-			});
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	public List<Product> mapProduct() {
+		List<Product> products = new ArrayList<Product>();
+		List<TempProduct> temp = productRepository.findAll();
+		for (TempProduct t : temp) {
+			Product p = new Product();
+			p.setId(String.valueOf(t.getId()));
+			p.setAdoptedMeassure(t.getAdoptedMeassure());
+			p.setAlertNumber(t.getAlertNumber());
+			p.setAlertType(t.getAlertType());
+			p.setBarCode(t.getBarCode());
+			p.setBatchNumber(t.getBatchNumber());
+			p.setBatchNumberOrBarcode(t.getBatchNumberOrBarcode());
+			p.setBrand(t.getBrand());
+			p.setCategory(t.getCategory());
+			p.setCompanyRecallCode(t.getCompanyRecallCode());
+			p.setCompanyRecallPage(t.getCompanyRecallPage());
+			p.setCounterfeit(t.getCounterfeit());
+			p.setCountryOfOrigin(t.getCountryOfOrigin());
+			p.setDescription(t.getDescription());
+			p.setFoundAndTakenMeassure(t.getFoundAndTakenMeassure());
+			p.setName(t.getName());
+			p.setNumberOfModel(t.getNumberOfModel());
+			p.setPackagingDescription(t.getPackagingDescription());
+			p.setPortalCategory(t.getPortalCategory());
+			p.setProduct(t.getProduct());
+			p.setProductionDates(t.getProductionDates());
+			p.setRisk(t.getRisk());
+			p.setRiskType(t.getRiskType());
+			p.setSubmittedBy(t.getSubmittedBy());
+			p.setTechnicalDefect(t.getTechnicalDefect());
+			p.setUrlOfCase(t.getUrlOfCase());
+			p.setWeek(t.getWeek());
+			p.setYear(t.getYear());
+			
+			products.add(p);
+			
 		}
 		return products;
 	}

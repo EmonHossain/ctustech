@@ -10,7 +10,6 @@ import org.springframework.data.elasticsearch.core.query.GetQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -66,8 +65,47 @@ public class ElasticTestController {
 	
 	@GetMapping("/search")
 	public List<Product> getSearchedItem(@RequestParam(name="q") String text) {
-		QueryBuilder builders = QueryBuilders.boolQuery().should(QueryBuilders.queryStringQuery(text).lenient(true).field("name").field("type").field("origin"))
-				.should(QueryBuilders.queryStringQuery("*"+text+"*").lenient(true).field("name").field("type").field("origin"));
+		QueryBuilder builders = QueryBuilders.boolQuery().should(QueryBuilders.queryStringQuery(text).lenient(true)
+				.field("name")
+				.field("type")
+				.field("year")
+				.field("week")
+				.field("alertType")
+				.field("alertNumber")
+				.field("category")
+				.field("product")
+				.field("brand")
+				.field("name")
+				.field("numberOfModel")
+				.field("batchNumberOrBarcode")
+				.field("portalCategory")
+				.field("countryOfOrigin")
+				.field("riskType")
+				.field("adoptedMeassure")
+				.field("barCode")
+				.field("batchNumber")
+				.field("productionDates"))
+				
+				.should(QueryBuilders.queryStringQuery("*"+text+"*").lenient(true)
+						.field("name")
+						.field("type")
+						.field("year")
+						.field("week")
+						.field("alertType")
+						.field("alertNumber")
+						.field("category")
+						.field("product")
+						.field("brand")
+						.field("name")
+						.field("numberOfModel")
+						.field("batchNumberOrBarcode")
+						.field("portalCategory")
+						.field("countryOfOrigin")
+						.field("riskType")
+						.field("adoptedMeassure")
+						.field("barCode")
+						.field("batchNumber")
+						.field("productionDates"));
 		
 		SearchQuery query = new NativeSearchQueryBuilder().withQuery(builders).build();
 		List<Product> samples = elasticsearchOperations.queryForList(query, Product.class);
