@@ -1,18 +1,20 @@
-package com.ctustech.api.search;
+package com.ctustech.api.consume;
 
 import javax.persistence.Column;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
-
-import lombok.Data;
-
-@Data
-@Document(indexName="counterfiet", type="product")
-public class Product {
+@Entity
+@Table(name="products")
+public class TempProduct {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long id;
 	@JsonProperty("Year")
 	private String year;
 	@JsonProperty("Week")
@@ -22,7 +24,6 @@ public class Product {
     @JsonProperty("Product user")
     private String productUser;
     @JsonProperty("Alert number")
-    @Id
     private String alertNumber;
     @JsonProperty("Alert submitted by")
     private String submittedBy;
@@ -62,6 +63,7 @@ public class Product {
     @JsonProperty("Company recall page")
     private String companyRecallPage;
     @JsonProperty("URL of Case")
+    @Column(columnDefinition="TEXT")
     private String urlOfCase;
     @JsonProperty("Barcode")
     private String barCode;
@@ -74,5 +76,6 @@ public class Product {
     @JsonProperty("Production dates (**)")
     private String productionDates;
     @JsonProperty("Packaging description")
-    private String packagingDescription;	
+    @Column(columnDefinition="TEXT")
+    private String packagingDescription;
 }
