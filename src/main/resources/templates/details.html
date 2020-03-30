@@ -16,42 +16,42 @@
 			
 			<div class="panel panel-info">
 				<div class="panel-heading"><strong>Details</strong></div>
-  				<div class="panel-body">
+  				<div class="panel-body" >
   					<div class="col-md-4">
-  						<img class="img-responsive" alt="Image" th:src="@{/img/light.jpeg}">
+  						<img class="img-responsive" alt="Image" />
   					</div>
   					<div class="col-md-6">
   						<table>
   							<tr>
-  								<td><strong>Alert number :</strong></td>
+  								<td><strong>Alert number :</strong><span th:text="${product.alertNumber}"></span></td>
   								<td></td>
   							</tr>
   							<tr>
-  								<td><strong>Category :</strong></td>
+  								<td><strong>Category :</strong><span th:text="${product.category}"></span></td>
   								<td></td>
   							</tr>
   							<tr>
-  								<td><strong>Product :</strong></td>
+  								<td><strong>Product :</strong> <span th:text="${product.product}"></span></td>
   								<td></td>
   							</tr>
   							<tr>
-  								<td><strong>Brand :</strong></td>
+  								<td><strong>Brand :</strong><span th:text="${product.brand}"></span></td>
   								<td></td>
   							</tr>
   							<tr>
-  								<td><strong>Name :</strong></td>
+  								<td><strong>Name :</strong><span th:text="${product.name}"></span></td>
   								<td></td>
   							</tr>
   							<tr>
-  								<td><strong>Type/Number of Model :</strong></td>
+  								<td><strong>Type/Number of Model :</strong><span th:text="${product.numberOfModel}"></span></td>
   								<td></td>
   							</tr>
   							<tr>
-  								<td><strong>Barcode :</strong></td>
+  								<td><strong>Barcode :</strong><span th:text="${product.barCode}"></span></td>
   								<td></td>
   							</tr>
   							<tr>
-  								<td><strong>Batch Number :</strong></td>
+  								<td><strong>Batch Number :</strong><span th:text="${product.batchNumber}"></span></td>
   								<td></td>
   							</tr>
   						</table>
@@ -72,13 +72,13 @@
   					</div>
   					<div class="col-md-12">
   						<ul class="list-group">
-						    <li class="list-group-item"><strong>Risk type : </strong><p></p></li>
-						    <li class="list-group-item"><strong>Description : </strong><p></p></li>
-						    <li class="list-group-item"><strong>Packaging Description : </strong><p></p></li>
-						    <li class="list-group-item"><strong>Country of Origin : </strong><p></p></li>
-						    <li class="list-group-item"><strong>Alert Submitted by : </strong><p></p></li>
-						    <li class="list-group-item"><strong>Type of Alert : </strong><p></p></li>
-						    <li class="list-group-item"><strong>Year-week : </strong><p></p></li>
+						    <li class="list-group-item"><strong>Risk type : </strong><p th:text="${product.riskType}"></p></li>
+						    <li class="list-group-item"><strong>Description : </strong><p th:text="${product.description}"></p></li>
+						    <li class="list-group-item"><strong>Packaging Description : </strong><p th:text="${product.packagingDescription}"></p></li>
+						    <li class="list-group-item"><strong>Country of Origin : </strong><p th:text="${product.countryOfOrigin}"></p></li>
+						    <li class="list-group-item"><strong>Alert Submitted by : </strong><p th:text="${product.submittedBy}"></p></li>
+						    <li class="list-group-item"><strong>Type of Alert : </strong><p th:text="${product.alertType}"></p></li>
+						    <li class="list-group-item"><strong>Year-week : </strong><p th:text="${product.year+'-- '+product.week}"></p></li>
 					  	</ul>
   					</div>
   					<div class="col-md-12">

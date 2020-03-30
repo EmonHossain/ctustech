@@ -9,12 +9,13 @@ import org.springframework.data.elasticsearch.core.ElasticsearchOperations;
 import org.springframework.data.elasticsearch.core.query.GetQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
 import org.springframework.data.elasticsearch.core.query.SearchQuery;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+@Controller
 @RequestMapping("/product/")
 public class ElasticTestController {
 	
@@ -64,7 +65,7 @@ public class ElasticTestController {
 	*/
 	
 	@GetMapping("/search")
-	public List<Product> getSearchedItem(@RequestParam(name="q") String text) {
+	public String getSearchedItem(Model model,@RequestParam(name="q") String text) {
 		QueryBuilder builders = QueryBuilders.boolQuery().should(QueryBuilders.queryStringQuery(text).lenient(true)
 				.field("name")
 				.field("type")
@@ -109,17 +110,21 @@ public class ElasticTestController {
 		
 		SearchQuery query = new NativeSearchQueryBuilder().withQuery(builders).build();
 		List<Product> samples = elasticsearchOperations.queryForList(query, Product.class);
-		return samples;
+		model.addAttribute("products", samples);
+		return "index";
 	}
 	
 	@GetMapping("/list")
-	public List<Product> getItemList() {
+	public String getItemList(Model model) {
 		List<Product> products = elasticRepository.findAll();
-		return products;
+		model.addAttribute("products", products);
+		return "";
 	}
 	
 	@GetMapping("/item")
-	public Product getDetails(@RequestParam(name="q") String id) {
-		return elasticsearchOperations.queryForObject(GetQuery.getById(id), Product.class);
+	public String getDetails(Model model,@RequestParam(name="i") String id) {
+		Product product = elasticsearchOperations.queryForObject(GetQuery.getById(id), Product.class);
+		model.addAttribute("product", product);
+		return "details";
 	}
 }

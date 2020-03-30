@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>product list page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
+   <link rel="stylesheet" th:href="@{/css/search.css}">  
+  <script th:src="@{/js/jquery.min.js}"></script>  
+  <script th:src="@{/js/bootstrap.min.js}"></script>
+  
+</head>
+<body class="search-page">
+  <header> 
+    <a class="logo"><img th:src="@{/images/logo.png}" alt="logo" width="145"></a>
+  </header>
+<div class="seaech-list">
+  <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+          <div class="sub-titile">
+            <h1> User-friendly Secure Search </h1>
+          </div>
+            <form class="form" th:action="@{/product/search}" method="get">
+                <div class="row no-gutters align-items-center">
+                    <!--end of col-->
+                    <div class="col">
+                        <input class="form-control form-control-lg form-control-borderless" type="search" placeholder="Search topics or keywords" name="q">
+                    </div>
+                    <!--end of col-->
+                     <div class="col-auto text-center">
+                        <button class="btn btn-lg btn-success" type="text">Search</button>
+                    </div>
+                    <!--end of col-->
+                </div>
+            </form>
+        </div>
+        <!--end of col-->
+    </div>
+  
+  </div>
+  <div class="container container-search">
+    <div class="row">
+          <div class="col-sm-3 prd-list">
+            <div>
+            <a class="first__img" href="#"><img th:src="@{/images/product/1.jpg}" alt="product images" class="img-thumbnail"></a>
+          </div>
+          
+            <h2><a href="#">Chemical Products</a></h2>
+          </div>
+        
+        <div class="col-sm-3 prd-list">
+            <div>
+            <a class="first__img" href="#"><img th:src="@{/images/product/2.jpg}" alt="product images" class="img-thumbnail"></a>
+          </div>
+          
+            <h2><a href="#">Cosmetics</a></h2>
+          </div>
+        <div class="col-sm-3 prd-list">
+            <div>
+            <a class="first__img" href="#"><img th:src="@{/images/product/3.jpg}" alt="product images" class="img-thumbnail"></a>
+          </div>
+          
+            <h2><a href="#">Clothing</a></h2>
+          </div>
+          <div class="col-sm-3 prd-list">
+            <div>
+            <a class="first__img" href="#"><img th:src="@{/images/product/4.jpg}" alt="product images" class="img-thumbnail"></a>
+          </div>
+          
+            <h2><a href="#">Childcare Articles</a></h2>
+          </div> 
+          <div class="col-sm-6">
+            <div>
+            <a class="first__img" href="#"><img th:src="@{/images/product/5.jpg}" alt="product images" class="img-thumbnail"></a>
+          </div>
+          
+            <h2><a href="#">Electrical Appliances</a></h2>
+          </div> 
+          <div class="col-sm-3 prd-list">
+            <div>
+            <a class="first__img" href="#"><img th:src="@{/images/product/6.jpg}" alt="product images" class="img-thumbnail"></a>
+          </div>
+          
+            <h2><a href="#">Sports Equipment</a></h2>
+          </div>
+          <div class="col-sm-3 prd-list">
+            <div>
+            <a class="first__img" href="#"><img th:src="@{/images/product/7.jpg}" alt="product images" class="img-thumbnail"></a>
+          </div>
+          
+            <h2><a href="#">Construction Products</a></h2>
+          </div>
+        </div>
+  </div>
+</div>
+</body>
+</html>
